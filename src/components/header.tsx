@@ -3,13 +3,22 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
+interface Product {
+    id: number
+    title: string
+    price: number
+    description: string
+    image: string
+    quantity:number
+  }
+
 export default function Header() {
   const [cartCount, setCartCount] = useState(0)
 
   useEffect(() => {
     const updateCartCount = () => {
       const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-      const count = cart.reduce((sum: number, item: any) => sum + item.quantity, 0)
+      const count = cart.reduce((sum: number, item: Product) => sum + item.quantity, 0)
       setCartCount(count)
     }
 

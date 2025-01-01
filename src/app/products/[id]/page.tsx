@@ -23,7 +23,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
 
   const addToCart = () => {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-    const existingItem = cart.find((item: any) => item.id === product?.id)
+    const existingItem = cart.find((item: Product) => item.id === product?.id)
     
     if (existingItem) {
       existingItem.quantity += 1
